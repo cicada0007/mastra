@@ -1,5 +1,14 @@
 # @mastra/memory
 
+## 1.41.2-alpha.2
+
+### Patch Changes
+
+- Fixed semantic recall re-embedding the same text on every save. Saving messages whose text was already embedded by this Memory instance (a repeated reply, a re-saved message, a cloned thread) now reuses the stored vectors instead of calling the embedder again, while each message still gets its own vector row. Reused vectors are not counted again in the reported embedding usage. ([#30429](https://github.com/mastra-ai/mastra/pull/30429))
+
+- Updated dependencies [[`33eaa29`](https://github.com/mastra-ai/mastra/commit/33eaa293e28aa8cd86ad68e1eaf44b4929be818d)]:
+  - @mastra/core@1.84.0-alpha.3
+
 ## 1.41.2-alpha.1
 
 ### Patch Changes

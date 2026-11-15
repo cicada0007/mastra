@@ -1,5 +1,31 @@
 # @mastra/playground-ui
 
+## 69.1.0-alpha.3
+
+### Minor Changes
+
+- Switched `@mastra/playground-ui` components from Lucide to Central Icons, and added Central Icons for your own UI. Each icon is its own module under `@mastra/playground-ui/icons/central/` and works inside `Icon` like any other icon. The icons are licensed under the Central Icons license, not Apache-2.0. See `CENTRAL-ICONS-LICENSE.md` in the package. ([#29934](https://github.com/mastra-ai/mastra/pull/29934))
+
+  ```tsx
+  import { Icon } from '@mastra/playground-ui/icons/Icon';
+  import { IconMagnifyingGlass } from '@mastra/playground-ui/icons/central/IconMagnifyingGlass';
+
+  <Icon size="sm">
+    <IconMagnifyingGlass />
+  </Icon>;
+  ```
+
+### Patch Changes
+
+- Studio and Factory now use Central Icons for their interface icons. ([#29934](https://github.com/mastra-ai/mastra/pull/29934))
+
+- Updated dependencies [[`33eaa29`](https://github.com/mastra-ai/mastra/commit/33eaa293e28aa8cd86ad68e1eaf44b4929be818d), [`1072f7c`](https://github.com/mastra-ai/mastra/commit/1072f7c6268db5fb515460fdcdda173592bce450)]:
+  - @mastra/core@1.84.0-alpha.3
+  - @mastra/memory@1.41.2-alpha.2
+  - @mastra/client-js@1.60.1-alpha.3
+  - @mastra/ai-sdk@1.12.0
+  - @mastra/react@1.15.1-alpha.3
+
 ## 69.1.0-alpha.2
 
 ### Patch Changes

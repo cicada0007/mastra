@@ -1,5 +1,15 @@
 # mastra
 
+## 1.39.1-alpha.3
+
+### Patch Changes
+
+- Studio and Factory now use Central Icons for their interface icons. ([#29934](https://github.com/mastra-ai/mastra/pull/29934))
+
+- Updated dependencies [[`33eaa29`](https://github.com/mastra-ai/mastra/commit/33eaa293e28aa8cd86ad68e1eaf44b4929be818d)]:
+  - @mastra/core@1.84.0-alpha.3
+  - @mastra/deployer@1.84.0-alpha.3
+
 ## 1.39.1-alpha.2
 
 ### Patch Changes
