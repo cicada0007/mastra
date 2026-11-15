@@ -9,7 +9,7 @@
   },
   "recordings": [
     {
-      "hash": "8b3c21b226231c3f",
+      "hash": "30931c14e5580682",
       "request": {
         "url": "https://api.anthropic.com/v1/messages",
         "method": "POST",
@@ -28,35 +28,38 @@
                     "type": "string"
                   },
                   "stringMin": {
-                    "description": "sample text with a minimum of 5 characters\nconstraints: minimum length 5",
+                    "description": "sample text with a minimum of 5 characters\nmin length: 5.",
                     "type": "string"
                   },
                   "stringMax": {
-                    "description": "sample text with a maximum of 10 characters\nconstraints: maximum length 10",
+                    "description": "sample text with a maximum of 10 characters\nmax length: 10.",
                     "type": "string"
                   },
                   "stringEmail": {
-                    "description": "a sample email address\nconstraints: a valid email",
-                    "type": "string"
+                    "description": "a sample email address\npattern: ^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$.",
+                    "type": "string",
+                    "format": "email"
                   },
                   "stringEmoji": {
-                    "description": "a valid sample emoji\nconstraints: a valid emoji",
+                    "description": "a valid sample emoji\npattern: ^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$; format: emoji.",
                     "type": "string"
                   },
                   "stringUrl": {
-                    "description": "a valid sample url\nconstraints: a valid uri",
-                    "type": "string"
+                    "description": "a valid sample url",
+                    "type": "string",
+                    "format": "uri"
                   },
                   "stringUuid": {
-                    "description": "a valid sample uuid\nconstraints: a valid uuid",
-                    "type": "string"
+                    "description": "a valid sample uuid\npattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$.",
+                    "type": "string",
+                    "format": "uuid"
                   },
                   "stringCuid": {
-                    "description": "a valid sample cuid\nconstraints: input must match this regex ^[cC][0-9a-z]{6,}$\nformat: cuid.",
+                    "description": "a valid sample cuid\npattern: ^[cC][0-9a-z]{6,}$; format: cuid.",
                     "type": "string"
                   },
                   "stringRegex": {
-                    "description": "a valid sample string that satisfies the regex\nconstraints: input must match this regex ^test-",
+                    "description": "a valid sample string that satisfies the regex\npattern: ^test-.",
                     "type": "string"
                   },
                   "number": {
@@ -109,20 +112,24 @@
                     }
                   },
                   "date": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
-                    "type": "string"
+                    "description": "a valid sample date",
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "dateAfter": {
-                    "description": "a valid sample date after 2024-01-01\nconstraints: a valid date-time",
-                    "type": "string"
+                    "description": "a valid sample date after 2024-01-01",
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "dateBefore": {
-                    "description": "a valid sample date before today\nconstraints: a valid date-time",
-                    "type": "string"
+                    "description": "a valid sample date before today",
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "actualData": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
-                    "type": "string"
+                    "description": "a valid sample date",
+                    "type": "string",
+                    "format": "date-time"
                   },
                   "object": {
                     "description": "any valid sample object with a string and a number",
@@ -149,8 +156,8 @@
                         "type": "object",
                         "properties": {
                           "name": {
-                            "description": "constraints: minimum length 2",
-                            "type": "string"
+                            "type": "string",
+                            "description": "min length: 2."
                           },
                           "age": {
                             "description": "constraints: greater than or equal to 18",
@@ -379,7 +386,7 @@
       }
     },
     {
-      "hash": "42e17c74fef9d5ff",
+      "hash": "4f5868caa0bdd212",
       "request": {
         "url": "https://api.anthropic.com/v1/messages",
         "method": "POST",
@@ -411,36 +418,47 @@
                   },
                   "stringMin": {
                     "type": "string",
-                    "description": "sample text with a minimum of 5 characters\nconstraints: minimum length 5"
+                    "minLength": 5,
+                    "description": "sample text with a minimum of 5 characters"
                   },
                   "stringMax": {
                     "type": "string",
-                    "description": "sample text with a maximum of 10 characters\nconstraints: maximum length 10"
+                    "maxLength": 10,
+                    "description": "sample text with a maximum of 10 characters"
                   },
                   "stringEmail": {
                     "type": "string",
-                    "description": "a sample email address\nconstraints: a valid email"
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                    "description": "a sample email address"
                   },
                   "stringEmoji": {
                     "type": "string",
-                    "description": "a valid sample emoji\nconstraints: a valid emoji"
+                    "format": "emoji",
+                    "pattern": "^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$",
+                    "description": "a valid sample emoji"
                   },
                   "stringUrl": {
                     "type": "string",
-                    "description": "a valid sample url\nconstraints: a valid uri"
+                    "format": "uri",
+                    "description": "a valid sample url"
                   },
                   "stringUuid": {
                     "type": "string",
-                    "description": "a valid sample uuid\nconstraints: a valid uuid"
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                    "description": "a valid sample uuid"
                   },
                   "stringCuid": {
                     "type": "string",
                     "format": "cuid",
-                    "description": "a valid sample cuid\nconstraints: input must match this regex ^[cC][0-9a-z]{6,}$"
+                    "pattern": "^[cC][0-9a-z]{6,}$",
+                    "description": "a valid sample cuid"
                   },
                   "stringRegex": {
                     "type": "string",
-                    "description": "a valid sample string that satisfies the regex\nconstraints: input must match this regex ^test-"
+                    "pattern": "^test-",
+                    "description": "a valid sample string that satisfies the regex"
                   },
                   "number": {
                     "type": "number",
@@ -492,23 +510,27 @@
                     "description": "any valid sample array of strings with a maximum of 5 strings\nconstraints: maximum length 5"
                   },
                   "date": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateAfter": {
-                    "description": "a valid sample date after 2024-01-01\nconstraints: a valid date-time",
+                    "description": "a valid sample date after 2024-01-01",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateBefore": {
-                    "description": "a valid sample date before today\nconstraints: a valid date-time",
+                    "description": "a valid sample date before today",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "actualData": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": true
                   },
                   "object": {
@@ -536,7 +558,7 @@
                         "properties": {
                           "name": {
                             "type": "string",
-                            "description": "constraints: minimum length 2"
+                            "minLength": 2
                           },
                           "age": {
                             "type": "number",
@@ -829,7 +851,7 @@
       }
     },
     {
-      "hash": "8397d2fbf957e340",
+      "hash": "0929061ffc831311",
       "request": {
         "url": "https://api.anthropic.com/v1/messages",
         "method": "POST",
@@ -951,36 +973,47 @@
                   },
                   "stringMin": {
                     "type": "string",
-                    "description": "sample text with a minimum of 5 characters\nconstraints: minimum length 5"
+                    "minLength": 5,
+                    "description": "sample text with a minimum of 5 characters"
                   },
                   "stringMax": {
                     "type": "string",
-                    "description": "sample text with a maximum of 10 characters\nconstraints: maximum length 10"
+                    "maxLength": 10,
+                    "description": "sample text with a maximum of 10 characters"
                   },
                   "stringEmail": {
                     "type": "string",
-                    "description": "a sample email address\nconstraints: a valid email"
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                    "description": "a sample email address"
                   },
                   "stringEmoji": {
                     "type": "string",
-                    "description": "a valid sample emoji\nconstraints: a valid emoji"
+                    "format": "emoji",
+                    "pattern": "^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$",
+                    "description": "a valid sample emoji"
                   },
                   "stringUrl": {
                     "type": "string",
-                    "description": "a valid sample url\nconstraints: a valid uri"
+                    "format": "uri",
+                    "description": "a valid sample url"
                   },
                   "stringUuid": {
                     "type": "string",
-                    "description": "a valid sample uuid\nconstraints: a valid uuid"
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                    "description": "a valid sample uuid"
                   },
                   "stringCuid": {
                     "type": "string",
                     "format": "cuid",
-                    "description": "a valid sample cuid\nconstraints: input must match this regex ^[cC][0-9a-z]{6,}$"
+                    "pattern": "^[cC][0-9a-z]{6,}$",
+                    "description": "a valid sample cuid"
                   },
                   "stringRegex": {
                     "type": "string",
-                    "description": "a valid sample string that satisfies the regex\nconstraints: input must match this regex ^test-"
+                    "pattern": "^test-",
+                    "description": "a valid sample string that satisfies the regex"
                   },
                   "number": {
                     "type": "number",
@@ -1032,23 +1065,27 @@
                     "description": "any valid sample array of strings with a maximum of 5 strings\nconstraints: maximum length 5"
                   },
                   "date": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateAfter": {
-                    "description": "a valid sample date after 2024-01-01\nconstraints: a valid date-time",
+                    "description": "a valid sample date after 2024-01-01",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateBefore": {
-                    "description": "a valid sample date before today\nconstraints: a valid date-time",
+                    "description": "a valid sample date before today",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "actualData": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": true
                   },
                   "object": {
@@ -1076,7 +1113,7 @@
                         "properties": {
                           "name": {
                             "type": "string",
-                            "description": "constraints: minimum length 2"
+                            "minLength": 2
                           },
                           "age": {
                             "type": "number",
@@ -1298,7 +1335,7 @@
       }
     },
     {
-      "hash": "c847d28c4c40fdaa",
+      "hash": "3a72f5b189f8e947",
       "request": {
         "url": "https://api.anthropic.com/v1/messages",
         "method": "POST",
@@ -1330,36 +1367,47 @@
                   },
                   "stringMin": {
                     "type": "string",
-                    "description": "sample text with a minimum of 5 characters\nconstraints: minimum length 5"
+                    "minLength": 5,
+                    "description": "sample text with a minimum of 5 characters"
                   },
                   "stringMax": {
                     "type": "string",
-                    "description": "sample text with a maximum of 10 characters\nconstraints: maximum length 10"
+                    "maxLength": 10,
+                    "description": "sample text with a maximum of 10 characters"
                   },
                   "stringEmail": {
                     "type": "string",
-                    "description": "a sample email address\nconstraints: a valid email"
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                    "description": "a sample email address"
                   },
                   "stringEmoji": {
                     "type": "string",
-                    "description": "a valid sample emoji\nconstraints: a valid emoji"
+                    "format": "emoji",
+                    "pattern": "^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$",
+                    "description": "a valid sample emoji"
                   },
                   "stringUrl": {
                     "type": "string",
-                    "description": "a valid sample url\nconstraints: a valid uri"
+                    "format": "uri",
+                    "description": "a valid sample url"
                   },
                   "stringUuid": {
                     "type": "string",
-                    "description": "a valid sample uuid\nconstraints: a valid uuid"
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                    "description": "a valid sample uuid"
                   },
                   "stringCuid": {
                     "type": "string",
                     "format": "cuid",
-                    "description": "a valid sample cuid\nconstraints: input must match this regex ^[cC][0-9a-z]{6,}$"
+                    "pattern": "^[cC][0-9a-z]{6,}$",
+                    "description": "a valid sample cuid"
                   },
                   "stringRegex": {
                     "type": "string",
-                    "description": "a valid sample string that satisfies the regex\nconstraints: input must match this regex ^test-"
+                    "pattern": "^test-",
+                    "description": "a valid sample string that satisfies the regex"
                   },
                   "number": {
                     "type": "number",
@@ -1411,23 +1459,27 @@
                     "description": "any valid sample array of strings with a maximum of 5 strings\nconstraints: maximum length 5"
                   },
                   "date": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateAfter": {
-                    "description": "a valid sample date after 2024-01-01\nconstraints: a valid date-time",
+                    "description": "a valid sample date after 2024-01-01",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateBefore": {
-                    "description": "a valid sample date before today\nconstraints: a valid date-time",
+                    "description": "a valid sample date before today",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "actualData": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": true
                   },
                   "object": {
@@ -1455,7 +1507,7 @@
                         "properties": {
                           "name": {
                             "type": "string",
-                            "description": "constraints: minimum length 2"
+                            "minLength": 2
                           },
                           "age": {
                             "type": "number",
@@ -1748,7 +1800,7 @@
       }
     },
     {
-      "hash": "c31ba2345d6a88c6",
+      "hash": "5dbd703c00929d6c",
       "request": {
         "url": "https://api.anthropic.com/v1/messages",
         "method": "POST",
@@ -1870,36 +1922,47 @@
                   },
                   "stringMin": {
                     "type": "string",
-                    "description": "sample text with a minimum of 5 characters\nconstraints: minimum length 5"
+                    "minLength": 5,
+                    "description": "sample text with a minimum of 5 characters"
                   },
                   "stringMax": {
                     "type": "string",
-                    "description": "sample text with a maximum of 10 characters\nconstraints: maximum length 10"
+                    "maxLength": 10,
+                    "description": "sample text with a maximum of 10 characters"
                   },
                   "stringEmail": {
                     "type": "string",
-                    "description": "a sample email address\nconstraints: a valid email"
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                    "description": "a sample email address"
                   },
                   "stringEmoji": {
                     "type": "string",
-                    "description": "a valid sample emoji\nconstraints: a valid emoji"
+                    "format": "emoji",
+                    "pattern": "^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$",
+                    "description": "a valid sample emoji"
                   },
                   "stringUrl": {
                     "type": "string",
-                    "description": "a valid sample url\nconstraints: a valid uri"
+                    "format": "uri",
+                    "description": "a valid sample url"
                   },
                   "stringUuid": {
                     "type": "string",
-                    "description": "a valid sample uuid\nconstraints: a valid uuid"
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                    "description": "a valid sample uuid"
                   },
                   "stringCuid": {
                     "type": "string",
                     "format": "cuid",
-                    "description": "a valid sample cuid\nconstraints: input must match this regex ^[cC][0-9a-z]{6,}$"
+                    "pattern": "^[cC][0-9a-z]{6,}$",
+                    "description": "a valid sample cuid"
                   },
                   "stringRegex": {
                     "type": "string",
-                    "description": "a valid sample string that satisfies the regex\nconstraints: input must match this regex ^test-"
+                    "pattern": "^test-",
+                    "description": "a valid sample string that satisfies the regex"
                   },
                   "number": {
                     "type": "number",
@@ -1951,23 +2014,27 @@
                     "description": "any valid sample array of strings with a maximum of 5 strings\nconstraints: maximum length 5"
                   },
                   "date": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateAfter": {
-                    "description": "a valid sample date after 2024-01-01\nconstraints: a valid date-time",
+                    "description": "a valid sample date after 2024-01-01",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "dateBefore": {
-                    "description": "a valid sample date before today\nconstraints: a valid date-time",
+                    "description": "a valid sample date before today",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": false
                   },
                   "actualData": {
-                    "description": "a valid sample date\nconstraints: a valid date-time",
+                    "description": "a valid sample date",
                     "type": "string",
+                    "format": "date-time",
                     "x-date": true
                   },
                   "object": {
@@ -1995,7 +2062,7 @@
                         "properties": {
                           "name": {
                             "type": "string",
-                            "description": "constraints: minimum length 2"
+                            "minLength": 2
                           },
                           "age": {
                             "type": "number",

@@ -6,8 +6,8 @@ exports[`Anthropic e2e test > should be successful with structured_output 1`] = 
   "additionalProperties": false,
   "properties": {
     "actualData": {
-      "description": "a valid sample date
-constraints: a valid date-time",
+      "description": "a valid sample date",
+      "format": "date-time",
       "type": "string",
       "x-date": true,
     },
@@ -28,20 +28,20 @@ constraints: minimum length 1",
       "type": "array",
     },
     "date": {
-      "description": "a valid sample date
-constraints: a valid date-time",
+      "description": "a valid sample date",
+      "format": "date-time",
       "type": "string",
       "x-date": false,
     },
     "dateAfter": {
-      "description": "a valid sample date after 2024-01-01
-constraints: a valid date-time",
+      "description": "a valid sample date after 2024-01-01",
+      "format": "date-time",
       "type": "string",
       "x-date": false,
     },
     "dateBefore": {
-      "description": "a valid sample date before today
-constraints: a valid date-time",
+      "description": "a valid sample date before today",
+      "format": "date-time",
       "type": "string",
       "x-date": false,
     },
@@ -151,7 +151,7 @@ constraints: multiple of 2",
               "type": "number",
             },
             "name": {
-              "description": "constraints: minimum length 2",
+              "minLength": 2,
               "type": "string",
             },
           },
@@ -183,44 +183,47 @@ constraints: multiple of 2",
       "type": "string",
     },
     "stringCuid": {
-      "description": "a valid sample cuid
-constraints: input must match this regex ^[cC][0-9a-z]{6,}$",
+      "description": "a valid sample cuid",
       "format": "cuid",
+      "pattern": "^[cC][0-9a-z]{6,}$",
       "type": "string",
     },
     "stringEmail": {
-      "description": "a sample email address
-constraints: a valid email",
+      "description": "a sample email address",
+      "format": "email",
+      "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
       "type": "string",
     },
     "stringEmoji": {
-      "description": "a valid sample emoji
-constraints: a valid emoji",
+      "description": "a valid sample emoji",
+      "format": "emoji",
+      "pattern": "^(?=[\\s\\S]*[\\p{Extended_Pictographic}\\p{Regional_Indicator}\\u20E3])[\\p{Extended_Pictographic}\\p{Emoji_Component}]+$",
       "type": "string",
     },
     "stringMax": {
-      "description": "sample text with a maximum of 10 characters
-constraints: maximum length 10",
+      "description": "sample text with a maximum of 10 characters",
+      "maxLength": 10,
       "type": "string",
     },
     "stringMin": {
-      "description": "sample text with a minimum of 5 characters
-constraints: minimum length 5",
+      "description": "sample text with a minimum of 5 characters",
+      "minLength": 5,
       "type": "string",
     },
     "stringRegex": {
-      "description": "a valid sample string that satisfies the regex
-constraints: input must match this regex ^test-",
+      "description": "a valid sample string that satisfies the regex",
+      "pattern": "^test-",
       "type": "string",
     },
     "stringUrl": {
-      "description": "a valid sample url
-constraints: a valid uri",
+      "description": "a valid sample url",
+      "format": "uri",
       "type": "string",
     },
     "stringUuid": {
-      "description": "a valid sample uuid
-constraints: a valid uuid",
+      "description": "a valid sample uuid",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
       "type": "string",
     },
     "unionObjects": {

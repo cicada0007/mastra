@@ -127,6 +127,39 @@ describe('AnthropicSchemaCompatLayer', () => {
     });
   });
 
+  describe('string constraints on non-Haiku Claude models', () => {
+    it('keeps pattern, minLength and maxLength in the JSON Schema instead of the description', () => {
+      const schema = z.object({
+        code: z
+          .string()
+          .regex(/^[A-Z]{3}$/)
+          .min(3)
+          .max(3)
+          .describe('A three letter code'),
+      });
+      const layer = new AnthropicSchemaCompatLayer(modelInfo);
+      const jsonSchema = standardSchemaToJSONSchema(layer.processToCompatSchema(schema)) as any;
+
+      expect(jsonSchema.properties.code.pattern).toBe('^[A-Z]{3}$');
+      expect(jsonSchema.properties.code.minLength).toBe(3);
+      expect(jsonSchema.properties.code.maxLength).toBe(3);
+      expect(jsonSchema.properties.code.description).toBe('A three letter code');
+    });
+
+    it('keeps pattern for raw JSON Schema input', () => {
+      const layer = new AnthropicSchemaCompatLayer(modelInfo);
+      const jsonSchema = standardSchemaToJSONSchema(
+        layer.processToCompatSchema({
+          type: 'object',
+          properties: { code: { type: 'string', pattern: '^[A-Z]{3}$' } },
+          required: ['code'],
+        } as any),
+      ) as any;
+
+      expect(jsonSchema.properties.code.pattern).toBe('^[A-Z]{3}$');
+    });
+  });
+
   describe('Haiku string length constraints', () => {
     const haikuModelInfo: ModelInformation = {
       provider: 'anthropic',

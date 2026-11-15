@@ -166,7 +166,9 @@ export class AnthropicSchemaCompatLayer extends SchemaCompatLayer {
       this.defaultArrayHandler(schema);
     } else if (isNumberSchema(schema)) {
       this.defaultNumberHandler(schema);
-    } else if (isStringSchema(schema)) {
+    } else if (isStringSchema(schema) && this.#isHaikuModel()) {
+      // Only claude-3.5-haiku ignores string constraints, so only it needs them moved into the description.
+      // Other Claude models accept pattern, minLength, maxLength and format natively.
       this.defaultStringHandler(schema);
     }
   }
